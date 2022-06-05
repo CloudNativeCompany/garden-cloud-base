@@ -13,10 +13,13 @@
  *     See the License for the specific language governing permissions and
  *     limitations under the License.
  */
-package org.cnc.garden.cloud.web.resp;
+package org.cnc.garden.cloud.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.Getter;
 import org.cnc.garden.cloud.common.result.IResultCode;
 import org.cnc.garden.cloud.common.result.ResultCode;
 
@@ -29,7 +32,10 @@ import java.io.Serializable;
  * @author tony-is-coding
  * @date 2022/6/5 9:59
  */
-public class Result<T> implements Serializable {
+@Data
+@Getter
+@ApiModel(value = "统一响应结果")
+public class Response<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "状态码", required = true)
@@ -45,27 +51,27 @@ public class Result<T> implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
-    private Result() {
+    private Response() {
         this.time = System.currentTimeMillis();
     }
 
-    private Result(IResultCode resultCode) {
+    private Response(IResultCode resultCode) {
         this(resultCode, null, resultCode.getMsg());
     }
 
-    private Result(IResultCode resultCode, String msg) {
+    private Response(IResultCode resultCode, String msg) {
         this(resultCode, null, msg);
     }
 
-    private Result(IResultCode resultCode, T data) {
+    private Response(IResultCode resultCode, T data) {
         this(resultCode, data, resultCode.getMsg());
     }
 
-    private Result(IResultCode resultCode, T data, String msg) {
+    private Response(IResultCode resultCode, T data, String msg) {
         this(resultCode.getCode(), data, msg);
     }
 
-    private Result(int code, T data, String msg) {
+    private Response(int code, T data, String msg) {
         this.code = code;
         this.data = data;
         this.msg = msg;
@@ -79,51 +85,51 @@ public class Result<T> implements Serializable {
      * @param <T>        泛型标识
      * @return ApiResult
      */
-    public static <T> Result<T> success(IResultCode resultCode) {
-        return new Result<>(resultCode);
+    public static <T> Response<T> success(IResultCode resultCode) {
+        return new Response<>(resultCode);
     }
 
-    public static <T> Result<T> success(String msg) {
-        return new Result<>(ResultCode.SUCCESS, msg);
+    public static <T> Response<T> success(String msg) {
+        return new Response<>(ResultCode.SUCCESS, msg);
     }
 
-    public static <T> Result<T> success(IResultCode resultCode, String msg) {
-        return new Result<>(resultCode, msg);
+    public static <T> Response<T> success(IResultCode resultCode, String msg) {
+        return new Response<>(resultCode, msg);
     }
 
-    public static <T> Result<T> data(T data) {
+    public static <T> Response<T> data(T data) {
         return data(data, DEFAULT_SUCCESS_MESSAGE);
     }
 
-    public static <T> Result<T> data(T data, String msg) {
+    public static <T> Response<T> data(T data, String msg) {
         return data(ResultCode.SUCCESS.getCode(), data, msg);
     }
 
-    public static <T> Result<T> data(int code, T data, String msg) {
-        return new Result<>(code, data, data == null ? DEFAULT_BLANK_MESSAGE : msg);
+    public static <T> Response<T> data(int code, T data, String msg) {
+        return new Response<>(code, data, data == null ? DEFAULT_BLANK_MESSAGE : msg);
     }
 
-    public static <T> Result<T> fail() {
-        return new Result<>(ResultCode.FAILURE, ResultCode.FAILURE.getMsg());
+    public static <T> Response<T> fail() {
+        return new Response<>(ResultCode.FAILURE, ResultCode.FAILURE.getMsg());
     }
 
-    public static <T> Result<T> fail(String msg) {
-        return new Result<>(ResultCode.FAILURE, msg);
+    public static <T> Response<T> fail(String msg) {
+        return new Response<>(ResultCode.FAILURE, msg);
     }
 
-    public static <T> Result<T> fail(int code, String msg) {
-        return new Result<>(code, null, msg);
+    public static <T> Response<T> fail(int code, String msg) {
+        return new Response<>(code, null, msg);
     }
 
-    public static <T> Result<T> fail(IResultCode resultCode) {
-        return new Result<>(resultCode);
+    public static <T> Response<T> fail(IResultCode resultCode) {
+        return new Response<>(resultCode);
     }
 
-    public static <T> Result<T> fail(IResultCode resultCode, String msg) {
-        return new Result<>(resultCode, msg);
+    public static <T> Response<T> fail(IResultCode resultCode, String msg) {
+        return new Response<>(resultCode, msg);
     }
 
-    public static <T> Result<T> condition(boolean flag) {
+    public static <T> Response<T> condition(boolean flag) {
         return flag ? success(DEFAULT_SUCCESS_MESSAGE) : fail(DEFAULT_FAILURE_MESSAGE);
     }
 

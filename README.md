@@ -1,2 +1,3 @@
 # garden-cloud-base
-The technology base for garden
+
+一个基础的脚手架项目

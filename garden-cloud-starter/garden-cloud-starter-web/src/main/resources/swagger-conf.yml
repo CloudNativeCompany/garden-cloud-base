@@ -1,0 +1,29 @@
+#Swagger属性配置
+garden:
+  swagger:
+    enable: false
+    title: 接口文档
+    description: 接口文档管理
+    license: Powered by Garden
+    service-url: http://blog.tony-is-coding.top
+    contact-name: tony-is-coding
+    contact-url: http://blog.tony-is-coding.top
+    contact-email: newbiwtan@163.com
+# knife4j配置
+knife4j:
+  enable: ${garden.swagger.enable}
+  # 开启生产环境屏蔽
+  production: false
+  setting:
+    # 是否不显示Knife4j默认的footer，默认为true(显示)
+    enableFooter: false
+    # 是否自定义Footer，默认为false(非自定义)
+    enableFooterCustom: false
+    # 自定义Footer内容,支持Markdown语法
+    enableHomeCustom: false
+
+# 默认路径匹配策略切换回ant_path_matcher
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

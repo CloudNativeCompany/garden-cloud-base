@@ -1,0 +1,4 @@
+garden:
+  swagger:
+    enable: true
+
