@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
     org.cnc.garden.cloud.web.config.JsonSerializerAutoConfiguration,\
     org.cnc.garden.cloud.web.config.WebExceptionHandlerAutoConfiguration,\
-    org.cnc.garden.cloud.web.config.SwaggerAutoConfiguration
+    org.cnc.garden.cloud.web.config.SwaggerAutoConfiguration,\
+    org.cnc.garden.cloud.web.config.WebMVCAutoConfiguration

@@ -16,7 +16,6 @@
 package org.cnc.garden.cloud.web.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.cnc.garden.cloud.common.constant.WebConstant;
 import org.cnc.garden.cloud.common.exception.BaseException;
 import org.cnc.garden.cloud.common.exception.TokenException;
@@ -97,12 +96,6 @@ public class BaseExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Response<?> handleException(Exception ex) {
         log.error("程序异常：" + ex.toString());
-        String message = ex.getMessage();
-        if (StringUtils.contains(message, "Bad credentials")) {
-            message = "您输入的密码不正确";
-        } else if (StringUtils.contains(ex.toString(), "InternalAuthenticationServiceException")) {
-            message = "您输入的用户名不存在";
-        }
-        return Response.fail(WebConstant.Status.INTERNAL_SERVER_ERROR.getCode(), message);
+        return Response.fail(WebConstant.Status.INTERNAL_SERVER_ERROR.getCode(), ex.getMessage());
     }
 }

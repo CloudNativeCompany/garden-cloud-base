@@ -13,15 +13,14 @@
  *     See the License for the specific language governing permissions and
  *     limitations under the License.
  */
-package org.cnc.garden.cloud.web.entity;
+package org.cnc.garden.cloud.common.entity;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * org.cnc.garden.cloud.web.entity - UserInfo
+ * org.cnc.garden.cloud.common.entity - UserInfo
  *
  * @author tony-is-coding
  * @date 2022/6/5 10:33
@@ -33,48 +32,49 @@ public class UserInfo implements Serializable {
     /**
      * 用户id
      */
-    @ApiModelProperty(hidden = true)
     private String userId;
     /**
      * 账号
      */
-    @ApiModelProperty(hidden = true)
     private String account;
     /**
      * 用户名
      */
-    @ApiModelProperty(hidden = true)
     private String userName;
     /**
      * 企业ID
      */
-    @ApiModelProperty(hidden = true)
     private String companyId;
     /**
      * 部门id
      */
-    @ApiModelProperty(hidden = true)
     private String deptId;
     /**
      * 岗位id
      */
-    @ApiModelProperty(hidden = true)
-    private String postId;
+    private String jobId;
     /**
      * 角色id
      */
-    @ApiModelProperty(hidden = true)
     private String roleId;
     /**
      * 角色名
      */
-    @ApiModelProperty(hidden = true)
     private String roleName;
-
     /**
      * 登录类型
      */
-    @ApiModelProperty(hidden = true)
     private int type;
+
+
+    public static UserInfo anonymous(){
+        UserInfo info = new UserInfo();
+        info.setAccount("tony-is-coding");
+        info.setCompanyId("sajk1lk12u378kasj84anvu24554");
+        info.setDeptId("sajk1lk12u378kasj84anvu2455jj");
+        info.setUserId("23189300892");
+        info.setJobId("001");
+        return info;
+    }
 
 }

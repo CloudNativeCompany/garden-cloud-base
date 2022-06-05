@@ -2,6 +2,8 @@ package org.cnc.garden.cloud.example.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.cnc.garden.cloud.common.entity.UserInfo;
+import org.cnc.garden.cloud.web.annotation.User;
 import org.cnc.garden.cloud.web.dto.Response;
 import org.cnc.garden.cloud.example.dto.UserRegistryRequest;
 import org.cnc.garden.cloud.example.dto.UserRegistryResponse;
@@ -25,11 +27,14 @@ public class ExampleController {
 
     @ApiOperation(value = "用户注册", notes = "用户注册")
     @PostMapping(value = "/registry")
-    public Response<UserRegistryResponse> registry(@RequestBody UserRegistryRequest request) {
+    public Response<UserRegistryResponse> registry(@RequestBody UserRegistryRequest request, @User UserInfo userInfo) {
         System.out.println(request);
+        System.out.println(userInfo);
         UserRegistryResponse resp = new UserRegistryResponse();
         resp.setToken(112738718923123981L);
         resp.setExpireAt(LocalDateTime.now());
+
+        int a = 1/0;
         return Response.data(resp);
     }
 }
