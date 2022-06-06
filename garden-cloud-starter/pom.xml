@@ -29,7 +29,7 @@
         <module>garden-cloud-starter-common</module>
         <module>garden-cloud-starter-dependencies</module>
         <module>garden-cloud-starter-web</module>
-        <module>garden-cloud-starter-httpclient</module>
+        <module>garden-cloud-starter-sentinel</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

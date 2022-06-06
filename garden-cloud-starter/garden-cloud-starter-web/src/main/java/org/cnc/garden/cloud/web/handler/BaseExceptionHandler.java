@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.cnc.garden.cloud.common.constant.WebConstant;
 import org.cnc.garden.cloud.common.exception.BaseException;
 import org.cnc.garden.cloud.common.exception.TokenException;
-import org.cnc.garden.cloud.web.dto.Response;
+import org.cnc.garden.cloud.common.result.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

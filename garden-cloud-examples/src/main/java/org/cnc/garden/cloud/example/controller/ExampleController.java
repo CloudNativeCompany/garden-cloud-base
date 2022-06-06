@@ -4,7 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.cnc.garden.cloud.common.entity.UserInfo;
 import org.cnc.garden.cloud.web.annotation.User;
-import org.cnc.garden.cloud.web.dto.Response;
+import org.cnc.garden.cloud.common.result.Response;
 import org.cnc.garden.cloud.example.dto.UserRegistryRequest;
 import org.cnc.garden.cloud.example.dto.UserRegistryResponse;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +33,9 @@ public class ExampleController {
         UserRegistryResponse resp = new UserRegistryResponse();
         resp.setToken(112738718923123981L);
         resp.setExpireAt(LocalDateTime.now());
-        int a = 1/0;
         return Response.data(resp);
     }
+
+
 }
 

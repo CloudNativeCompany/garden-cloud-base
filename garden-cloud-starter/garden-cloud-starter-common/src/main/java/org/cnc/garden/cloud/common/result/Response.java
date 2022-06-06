@@ -13,15 +13,13 @@
  *     See the License for the specific language governing permissions and
  *     limitations under the License.
  */
-package org.cnc.garden.cloud.web.dto;
+package org.cnc.garden.cloud.common.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
-import org.cnc.garden.cloud.common.result.IResultCode;
-import org.cnc.garden.cloud.common.result.ResultCode;
 
 import java.io.Serializable;
 
