@@ -27,7 +27,7 @@ import java.util.List;
  */
 @Slf4j
 @AutoConfiguration
-public class WebMVCAutoConfiguration implements WebMvcConfigurer {
+public class WebMvcAutoConfiguration implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         // 将用户信息数据反转注入到 被 @User 标注的注解下

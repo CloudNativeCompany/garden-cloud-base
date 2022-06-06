@@ -33,7 +33,6 @@ public class ExampleController {
         UserRegistryResponse resp = new UserRegistryResponse();
         resp.setToken(112738718923123981L);
         resp.setExpireAt(LocalDateTime.now());
-
         int a = 1/0;
         return Response.data(resp);
     }
