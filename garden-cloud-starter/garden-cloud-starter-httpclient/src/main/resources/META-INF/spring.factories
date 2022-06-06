@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.cnc.garden.cloud.httpclient.config.SentinelAutoConfiguration
+
