@@ -31,6 +31,7 @@
         <module>garden-cloud-starter-web</module>
         <module>garden-cloud-starter-sentinel</module>
         <module>garden-cloud-starter-feign</module>
+        <module>garden-cloud-starter-dlock</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
