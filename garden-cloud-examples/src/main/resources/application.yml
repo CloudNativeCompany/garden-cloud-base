@@ -1,4 +1,11 @@
 garden:
   swagger:
     enable: true
-
+spring:
+  application:
+    name: garden-cloud-example
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:9100
+      eager: true #取消控制台懒加载

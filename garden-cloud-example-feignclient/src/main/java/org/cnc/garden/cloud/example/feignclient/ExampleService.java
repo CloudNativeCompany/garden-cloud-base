@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "example-service", url = "http://127.0.0.1:8080/")
 public interface ExampleService {
 
+    /**
+     *  用户注册请求
+     * @param request 用户注册请求
+     * @return 通用结果
+     */
     @GetMapping("example/registry")
     Response<UserRegistryResponse> registry(@RequestBody UserRegistryRequest request);
 }

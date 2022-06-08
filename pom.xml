@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>garden-cloud-example-feignclient</module>
+        <module>garden-cloud-starter-feign</module>
     </modules>
 
 
