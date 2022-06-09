@@ -32,7 +32,17 @@ public class FeignClientApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        Response<UserRegistryResponse> registry = service.registry(UserRegistryRequest.random());
-        System.out.println(registry);
+        final int round = 100;
+        final int delay = 20;
+
+        for (int i = 0; i < round; i++) {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Response<UserRegistryResponse> registry = service.registry(UserRegistryRequest.random());
+            System.out.println(registry);
+        }
     }
 }
