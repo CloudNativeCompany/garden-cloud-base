@@ -13,9 +13,9 @@ spring:
     redisson:
       config: |
         singleServerConfig:
-          password: 123456
-          address: "redis://127.0.0.1:6379"
-          database: 1
+          password: dyn8DUbpzRQvrCxn
+          address: redis://redis.tonyiscoding.top:6379
+          database: 0
           idleConnectionTimeout: 10000
           connectTimeout: 10000
           timeout: 3000

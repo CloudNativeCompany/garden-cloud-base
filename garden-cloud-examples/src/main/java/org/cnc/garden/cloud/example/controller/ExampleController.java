@@ -3,6 +3,7 @@ package org.cnc.garden.cloud.example.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.cnc.garden.cloud.common.entity.UserInfo;
+import org.cnc.garden.cloud.example.lock.DistributeLock;
 import org.cnc.garden.cloud.web.annotation.User;
 import org.cnc.garden.cloud.common.result.Response;
 import org.cnc.garden.cloud.example.dto.UserRegistryRequest;
@@ -30,12 +31,16 @@ public class ExampleController {
     public Response<UserRegistryResponse> registry(@RequestBody UserRegistryRequest request, @User UserInfo userInfo) {
         System.out.println(request);
         System.out.println(userInfo);
+        return Response.data(lockAndCreate());
+    }
+
+    @DistributeLock(expireMs = 5000L, name = "UserLock")
+    public UserRegistryResponse lockAndCreate(){
         UserRegistryResponse resp = new UserRegistryResponse();
         resp.setToken(112738718923123981L);
         resp.setExpireAt(LocalDateTime.now());
-        return Response.data(resp);
+        return resp;
     }
-
 
 }
 
