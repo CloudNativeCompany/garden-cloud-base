@@ -26,8 +26,8 @@ spring:
       config: |
         singleServerConfig:
           password: dyn8DUbpzRQvrCxn
-          address: "redis://redis.tonyiscoding.top:6379"
-          database: 1
+          address: redis://redis.tonyiscoding.top:6379
+          database: 0
           idleConnectionTimeout: 10000
           connectTimeout: 10000
           timeout: 3000

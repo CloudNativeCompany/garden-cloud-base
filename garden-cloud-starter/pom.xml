@@ -151,7 +151,6 @@
                     <printFailingErrors>true</printFailingErrors>
                     <linkXRef>true</linkXRef>
                     <rulesets>
-                    <!-- 先关闭注释 -->
 <!--                        <ruleset>rulesets/java/ali-comment.xml</ruleset>-->
                         <ruleset>rulesets/java/ali-concurrent.xml</ruleset>
                         <ruleset>rulesets/java/ali-constant.xml</ruleset>

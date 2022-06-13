@@ -1,5 +1,5 @@
 singleServerConfig:
-  password: 123456
+  password: dyn8DUbpzRQvrCxn
   address: "redis://tonyiscoding.top:6379"
   database: 1
 threads: 0
