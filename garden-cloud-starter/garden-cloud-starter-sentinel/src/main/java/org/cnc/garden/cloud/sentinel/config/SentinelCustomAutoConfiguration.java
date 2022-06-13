@@ -25,7 +25,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,6 +39,8 @@ import javax.servlet.http.HttpServletRequest;
 @AutoConfigureBefore(SentinelFeignAutoConfiguration.class)
 public class SentinelCustomAutoConfiguration {
 
+    public static final int HTTP_STATUS_TOO_MANY_REQUEST = 429;
+
     /**
      * 限流、熔断统一处理类
      */
@@ -49,7 +50,7 @@ public class SentinelCustomAutoConfiguration {
         @Bean
         public BlockExceptionHandler webmvcBlockExceptionHandler() {
             return (request, response, e) -> {
-                response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+                response.setStatus(HTTP_STATUS_TOO_MANY_REQUEST);
                 Response<?> result = Response.fail("Too many request, please retry later.");
                 response.getWriter().print(JSONObject.toJSONString(result));
             };
