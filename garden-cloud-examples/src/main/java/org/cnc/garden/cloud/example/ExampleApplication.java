@@ -7,6 +7,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * org.cnc.garden.cloud.example - ExamploeApplication
  *
@@ -25,6 +30,14 @@ public class ExampleApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        controller.lockAndCreate();
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(4, 4, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1000));
+        final int batchSize = 50;
+        for (int i = 0; i < batchSize; i++) {
+            executor.submit(() -> {
+                controller.atomicAdd();
+            });
+        }
+        Thread.sleep(5000);
+        System.out.println(ExampleController.a);
     }
 }

@@ -31,15 +31,23 @@ public class ExampleController {
     public Response<UserRegistryResponse> registry(@RequestBody UserRegistryRequest request, @User UserInfo userInfo) {
         System.out.println(request);
         System.out.println(userInfo);
+        System.out.println(a == 1000);
         return Response.data(lockAndCreate());
     }
 
-    @DistributeLock(expireMs = 5000L, name = "UserLock")
-    public UserRegistryResponse lockAndCreate(){
+    @DistributeLock(expireSecond = 5, name = "UserLock")
+    public UserRegistryResponse lockAndCreate() {
         UserRegistryResponse resp = new UserRegistryResponse();
         resp.setToken(112738718923123981L);
         resp.setExpireAt(LocalDateTime.now());
         return resp;
+    }
+
+    public static long a = 0;
+
+    @DistributeLock(expireSecond = 5, name = "addLock")
+    public void atomicAdd() {
+        a++;
     }
 
 }

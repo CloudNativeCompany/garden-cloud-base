@@ -14,8 +14,22 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface DistributeLock {
-    // redisson distribute lock
-    long expireMs(); // expire million second
+    /**
+     * 等待获取锁的时长, 允许在知道超时时间范围内不断尝试获取锁
+     * <br/>
+     * 单位: 毫秒
+     */
+    long waitMs() default 500;
 
-    String name(); // lock name
+    /**
+     * 持有锁时长, 持有锁时长超过这个数自动释放锁
+     * <br/>
+     * 单位: 秒
+     */
+    long expireSecond();
+
+    /**
+     * 锁名称
+     */
+    String name();
 }
